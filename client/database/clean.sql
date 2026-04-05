@@ -1,0 +1,2 @@
+DROP DATABASE RestaurantTestDB;
+CREATE DATABASE RestaurantTestDB;
