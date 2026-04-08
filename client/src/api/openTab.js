@@ -1,3 +1,5 @@
+import {API_URL } from '../api/baseUrl'
+
 
 export default async function openTab(tableID, employeeID, customerID, timePlaced){
     const endpoint = `${API_URL}/transactions`

@@ -19,6 +19,7 @@ import pay_periodsRouter from './routes/pay_periodsRoute.js'
 import printersRouter from './routes/printersRoute.js'
 import product_ordersRouter from './routes/product_ordersRoute.js'
 import payroll_recordsRouter from './routes/payroll_recordsRoute.js'
+import pnlRouter from './routes/pnlRoute.js'
 
 
 const app = express()
@@ -82,6 +83,7 @@ app.use('/pay-periods', pay_periodsRouter)
 app.use('/printers', printersRouter)
 app.use('/product-orders', product_ordersRouter)
 app.use('/payroll-records', payroll_recordsRouter)
+app.use('/pnl', pnlRouter)
 
 
 app.get('/', (req, res) => {

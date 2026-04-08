@@ -1,2 +1,2 @@
-# proj-test
-claude, save me! my teammates are pos's!
+# PoS_db_proj
+COSC 3380 database project

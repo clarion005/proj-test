@@ -56,6 +56,25 @@ END IF;
 
 END$$ -- this works
 
+-- USE INGREDIENT TRIGGER --
+
+CREATE TRIGGER useIngredients
+AFTER INSERT ON product_orders
+
+FOR EACH ROW
+
+BEGIN
+
+UPDATE ingredients
+INNER JOIN recipes r ON r.ingredientID = ingredients.ingredientID
+INNER JOIN products p ON r.finishedProductID = p.productID
+INNER JOIN product_orders po ON p.productID = po.productID
+SET ingredients.quantity = ingredients.quantity - (r.quantity * NEW.quantity) -- original was 319
+WHERE r.finishedProductID = NEW.productID; -- this works!
+
+END; -- THIS WORKS AS INTENDED
+
+
 
 
 

@@ -121,4 +121,33 @@ tablesRouter.delete("/:tableID", async (req, res) => {
     }
 })
 
+tablesRouter.get("/employeeTables", isAuthorized, async (req, res) => {
+    const { employeeID } = req.session.employee
+
+    try {
+        const section = await getSectionByEmployeeID(employeeID)
+        if (!section) {
+            res.status(400).json({
+                message: "Could not find section"
+            })
+        }
+
+        // const tables = await getTablesFromSectionID(section.sectionID)
+        const tables = []
+        if (!tables) {
+            res.status(400).json({
+                message: "Could not find tables"
+            })
+        }
+
+        for (const table in tables) {
+            console.log("TODO")
+        }
+    } catch (err) {
+        return res.status(500).json({
+            message: "Server error"
+        })
+    }
+})
+
 export default tablesRouter
