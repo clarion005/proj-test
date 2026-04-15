@@ -8,17 +8,6 @@ const customersRouter = express.Router()
 customersRouter.use(isAuthorized)
 
 customersRouter.get("/", async (req, res) => {
-    try {
-        const customers = await getCustomers()
-        res.json(customers)
-    } catch (err) {
-        res.status(500).json({
-            message: "Server error"
-        })
-    }
-})
-
-customersRouter.get("/:customerID", async (req, res) => {
     const customerID = req.params.customerID
     try {
         const customer = await getCustomer(customerID)

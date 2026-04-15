@@ -13,8 +13,7 @@ function NewEmployee(){
         hourlyRate,
         password}) => {
            try{ 
-            const { data } = await addNewEmployee( 
-            firstName, lastName, dateHired, dateOfBirth, shiftRole, hourlyRate, password)
+            const { data } = await addNewEmployee(firstName, lastName, dateHired, dateOfBirth, shiftRole, hourlyRate, password)
            }
            catch(err){
             console.log(err.message)

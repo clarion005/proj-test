@@ -1,9 +1,9 @@
 import {API_URL } from '../api/baseUrl'
 
 
-export default async function openTab(tableID, employeeID, customerID, timePlaced){
-    const endpoint = `${API_URL}/transactions`
-
+export default async function openTab(tableID){
+    const endpoint = `${API_URL}/transactions/openTab`
+    
     const req = {
         method : 'POST',
         headers : {
@@ -11,23 +11,16 @@ export default async function openTab(tableID, employeeID, customerID, timePlace
         },
         credentials : 'include',
         body : JSON.stringify({
-            tableID,
-            employeeID,
-            customerID,
-            timePlaced
+            tableID
         })
     }
-
-    const res = await fetch(endpoint, req)
-    const data = await res.json().catch(() => ({})) 
-    if (!res.ok){
-        throw new Error (
-            data.message || `HTTP Error: ${res.status}`
-        );
-    }
+    const response = await fetch(endpoint,req)
+    const data = await response.json().catch(() => ({}))
+    console.log(data.message)
     
-    console.log(data.body)
-    return {
-        data
+    if (!response.ok){
+        throw new Error (`${response.status} ${data.message}`)
     }
+
+    return data
 }

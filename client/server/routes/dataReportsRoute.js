@@ -1,5 +1,5 @@
 import express from 'express'
-import { getItemsSoldReport, getRevenue_Summary, getRevenueBy_Employee, getTopSpenders, getTopVisitors } from '../database.js'
+import { getItemsSoldReport, getRevenue_Summary, getRevenueBy_Employee, getTopSpenders, getTopVisitors, getAvailableProduct, getAvailableProducts } from '../database.js'
 import isAuthorized from '../utils/auth.js'
 
 const dataReportsRouter = express.Router()
@@ -53,6 +53,36 @@ dataReportsRouter.get('/top-visitors', async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Failed to get top visitors' });
+    }
+})
+
+dataReportsRouter.get('/get-available-products', async (req, res) => {
+    try{
+        const availableProducts = await getAvailableProducts()
+        res.json(availableProducts)
+    } catch (err) {
+        res.status(500).json({
+            messsage: "Server error"
+        })
+    }
+})
+
+dataReportsRouter.get("/productID", async (req, res) => { //reminder: change endpoint later
+
+    try {
+        const product = await getAvailableProduct(productID)
+
+        if (!product) {
+            res.status(404).json({
+                message: "Product not found"
+            })
+        }
+
+        res.send(product)
+    } catch (err) {
+        res.status(500).json({
+            message: "Server error"
+        })
     }
 })
 

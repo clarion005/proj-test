@@ -44,7 +44,7 @@ function NewEmployeeForm({handleSubmit}){
 
                 <div className = 'flex flex-col gap-1'>
                     <label htmlFor="role">Role </label>
-                    <input type = "number" name = "role" id = "role" required className = 'border border=[#7ebeeba6] rounded-md px-2'/>
+                    <input type = "number" inputMode = "decimal" name = "role" id = "role" required className = 'border border=[#7ebeeba6] rounded-md px-2'/>
                 </div>
 
                 <div className = 'flex flex-col gap-1'>

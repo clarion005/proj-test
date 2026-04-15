@@ -1,7 +1,7 @@
 import { API_URL } from "./baseUrl"
 
 export async function fetchClockIn() {
-    const endpoint = `${API_URL}-entries/clock-in`
+    const endpoint = `${API_URL}/timeclock-entries/clock-in`
     const res = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -21,7 +21,7 @@ export async function fetchClockIn() {
 }
 
 export async function fetchClockOut() {
-    const endpoint = `${API_URL}-entries/clock-out`
+    const endpoint = `${API_URL}/timeclock-entries/clock-out`
     const res = await fetch(endpoint, {
         method: 'POST',
         headers: {

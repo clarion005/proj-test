@@ -4,7 +4,7 @@ import isAuthorized from '../utils/auth.js'
 
 const pnlRouter = express.Router()
 
-//pnlRouter.use(isAuthorized)
+pnlRouter.use(isAuthorized)
 
 pnlRouter.get('/', async (req, res) => {
     const { start, end } = req.query
@@ -19,9 +19,9 @@ pnlRouter.get('/', async (req, res) => {
         const foodCost = await getFoodCost(startDate, endDate)
         const laborCost = await getLaborCost(startDate, endDate)
 
-        const totalRevenue = revenue.totalRevenue ?? 0
-        const totalFoodCost = foodCost.totalFoodCost ?? 0
-        const totalLaborCost = laborCost.totalLaborCost ?? 0
+        const totalRevenue = revenue?.totalRevenue ?? 0
+        const totalFoodCost = foodCost?.totalFoodCost ?? 0
+        const totalLaborCost = laborCost?.totalLaborCost ?? 0
 
         res.status(200).json({
             totalRevenue,
